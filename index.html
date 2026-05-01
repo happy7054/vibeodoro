@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>VIBEODORO</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+<link href="https://fonts.googleapis.com/css2?family=Google+Sans:ital,opsz,wght@0,17..18,400..700;1,17..18,400..700&display=swap" rel="stylesheet">
+
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<!-- Background -->
+<div class="bg-layer" id="bgLayer"></div>
+<div class="bg-overlay" id="bgOverlay"></div>
+
+<!-- Goal Screen -->
+<section class="goal-screen" id="goalScreen">
+  <div class="goal-card">
+    <h2>Session Goal?</h2>
+    <input id="goalInput" maxlength="60" placeholder="What are we focusing on?">
+    <button id="goalBtn">Begin</button>
+  </div>
+</section>
+
+<!-- Settings -->
+<aside class="settings hidden-panel" id="settingsPanel">
+  <h3>Settings</h3>
+
+  <label>Focus Minutes</label>
+  <input type="number" id="focusInput" min="1" max="180" value="25">
+
+  <label>Break Minutes</label>
+  <input type="number" id="breakInput" min="1" max="60" value="5">
+
+  <label>Blocks Per Session</label>
+  <input type="number" id="blocksInput" min="2" max="8" step="2" value="4">
+
+  <label>Music Volume</label>
+  <input type="range" id="volumeInput" min="0" max="1" step="0.05" value="0.22">
+
+  <label>Background Blur</label>
+  <input type="range" id="blurInput" min="0" max="14" step="1" value="2">
+
+  <div class="toggle-row">
+    <span>Auto Advance</span>
+    <button class="toggle on" id="autoToggle">ON</button>
+  </div>
+
+  <div class="toggle-row">
+    <span>Effects Sound</span>
+    <button class="toggle on" id="fxToggle">ON</button>
+  </div>
+
+  <button class="save-btn" id="saveBtn">Save</button>
+  <button class="danger-btn" id="resetStatsBtn">Reset Stats</button>
+
+  <p class="version">VIBEODORO v2</p>
+</aside>
+
+<!-- App -->
+<div class="app hidden" id="app">
+
+<header class="topbar">
+
+<div class="brand">
+<h1>VIBEODORO</h1>
+
+<div class="stats">
+
+<div class="stat">
+<span>Sessions</span>
+<div class="bar"><div class="fill" id="sessionFill"></div></div>
+<span id="sessionCount">0</span>
+</div>
+
+<div class="stat">
+<span>Minutes</span>
+<div class="bar"><div class="fill" id="minuteFill"></div></div>
+<span id="minuteCount">0</span>
+</div>
+
+</div>
+</div>
+
+<button class="gear" id="settingsBtn">⚙</button>
+
+</header>
+
+<main class="main">
+
+<p class="goal-label">CURRENT GOAL</p>
+<h2 class="goal-text" id="goalText">General Focus Session</h2>
+
+<div class="timer-wrap">
+<div class="ring"></div>
+<div class="timer" id="timer">25:00</div>
+</div>
+
+<p class="block-progress" id="blockProgress">Block 1 of 4</p>
+
+<div class="cycle" id="cycleDisplay"></div>
+
+<div class="controls">
+<button id="startBtn">START</button>
+<button id="pauseBtn">PAUSE</button>
+<button id="skipBtn">SKIP</button>
+<button id="resetBtn">RESET</button>
+</div>
+
+</main>
+
+<footer class="footer">
+
+<div class="music-wrap">
+<span>🎵</span>
+<button class="toggle on small" id="musicToggle">ON</button>
+</div>
+
+<button class="bg-btn" id="bgBtn">Cycle BG</button>
+
+</footer>
+
+</div>
+
+<!-- Toast -->
+<div class="toast" id="toast">Saved ✓</div>
+
+<!-- Audio -->
+<audio id="bgMusic" loop>
+<source src="resources/bg-music-1.mp3" type="audio/mpeg">
+</audio>
+
+<audio id="blockSound">
+<source src="resources/effect-2.mp3" type="audio/mpeg">
+</audio>
+
+<audio id="finalSound">
+<source src="resources/effect-1.mp3" type="audio/mpeg">
+</audio>
+
+<script src="script.js"></script>
+</body>
+</html>
